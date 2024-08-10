@@ -24,13 +24,13 @@ read -p "please, Enter your choice: " choice
 
 #---------running-choice---------
 case $choice in
-	1) echo create_database
+	1) create_database
 	       	;;
-        2) echo list_datbase
+        2) list_database
 	       	;;
-        3) echo connect_to_database
+        3) connect_to_database
 	       	;;
-        4) echo drop_database
+        4) drop_database
 	       	;;
         5) exit 0  
 	       	;;

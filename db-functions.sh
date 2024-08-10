@@ -5,7 +5,7 @@
 #functions: 1.create DB  2.list DB  3.connect DB  4.drop DB 
 
 #-----------------Source-Section---------
-source ./table-functions
+source ./table-functions.sh
 
 #-------------database-file-path---------
 db_dir=" ./DBMS-project/databases"
