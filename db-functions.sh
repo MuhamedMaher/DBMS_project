@@ -17,7 +17,7 @@ database_options () {
         local db_name="$1"
     while true
     do
-
+        echo "-----------------------------"
         echo "Database Menu for $db_name:"
         echo "1. Create Table"
         echo "2. List Tables"
@@ -27,8 +27,11 @@ database_options () {
         echo "6. Delete From Table"
         echo "7. Update Table"
         echo "8. Back to Main Menu"
+	echo "-----------------------------"
 
         read -p "Enter your choice: " choice
+	echo "-----------------------------"
+
         case $choice in
 
             1) create_table "$db_name"

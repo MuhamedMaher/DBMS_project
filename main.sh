@@ -1,11 +1,24 @@
 #!/bin/bash
 
 #this is main file
- 
+
+#-------Intialization-message-------
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo -e "${BLUE}##############################${NC}"
+echo -e "${YELLOW}#   ____       _             #${NC}"
+echo -e "${YELLOW}#  | __ )  ___| |_ __ __     #${NC}"
+echo -e "${YELLOW}#  |  _ \ / _ \ __/ _  |     #${NC}"
+echo -e "${YELLOW}#  | |_) |  __/ || (_| |     #${NC}"
+echo -e "${YELLOW}#  |____/ \___|\__\__ _|     #${NC}"
+echo -e "${YELLOW}#                            #${NC}"
+echo -e "${BLUE}##############################${NC}"
+
 #--------------------------sourcing-section-----------------------------------
 source ./db-functions.sh
 source ./table-functions.sh
-
 
 #------------------------main-function-section--------------------------------
 while  true 
@@ -21,6 +34,7 @@ do
         echo "-----------------------------"
 #---------taking-user-input------
 read -p "please, Enter your choice: " choice
+echo "-----------------------------"
 
 #---------running-choice---------
 case $choice in
