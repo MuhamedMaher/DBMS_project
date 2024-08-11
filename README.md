@@ -26,7 +26,7 @@ To install the DBMS project on your local machine, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/dbms-project.git](https://github.com/MohamedMaher77/DBMS_project.git
+   git clone https://github.com/MohamedMaher77/DBMS_project.git
 2. Navigate to the project directory:
 
    ```bash
@@ -41,25 +41,7 @@ To install the DBMS project on your local machine, follow these steps:
    cd ~/DBMS-project
    ./main.sh
 
-   #!/bin/bash
-
-# Setup script for DBMS project
-
-# Define the installation directory
-INSTALL_DIR="$HOME/dbms_project"
-
-# Create the installation directory
-mkdir -p "$INSTALL_DIR"
-
-# Copy the project files to the installation directory
-cp -r * "$INSTALL_DIR"
-
-# Make the main script executable
-chmod +x "$INSTALL_DIR/main.sh"
-
-# Provide instructions to the user
-echo "DBMS project installed successfully!"
-echo "To run the project, navigate to $INSTALL_DIR and execute ./main.sh"
+ 
 
 
 
