@@ -5,20 +5,38 @@
 #-------------database-file-path---------
 db_dir=" ./DBMS-project/databases"
 
-#-----------create-tables-functions--------
+#-----------create-tables-functions------
 create_table() {
-	local db_name="$1"
-        read -p "please, Enter table name: " table_name
+    local db_name="$1"
+    read -p "Please, enter table name: " table_name
 
-	 if [ -f "$db_dir/$db_name/$table_name" ]; then
-                echo "Table already exists"
-        else
-                read -p "please, Enter columns names (comma-separated): " columns
-		echo "$columns" > "$db_dir/$db_name/$table_name" 
-		echo "Table created"
+    if [ -f "$db_dir/$db_name/$table_name" ]; then
+        echo "Table already exists."
+        return
+    fi
 
-        fi
+    read -p "Please, enter column names (comma-separated): " columns
+    IFS=',' read -r -a column_array <<< "$columns"
 
+    read -p "Do you want the first column '${column_array[0]}' to be a primary key? (y/n): " is_primary_key
+    if [ "$is_primary_key" == "y" ]; then
+        column_array[0]="${column_array[0]}-pk"
+    fi
+
+    types=()
+    for col in "${column_array[@]}"; do
+        read -p "Enter data type for '$col' (e.g., int, varchar): " col_type
+        types+=("$col_type")
+    done
+
+    echo "${column_array[*]}" | tr ' ' ',' > "$db_dir/$db_name/$table_name"
+    
+    echo "${types[*]}" | tr ' ' ',' > "$db_dir/$db_name/$table_name.types"
+
+    echo "Table '$table_name' created successfully with the following schema:"
+    for ((i = 0; i < ${#column_array[@]}; i++)); do
+        echo "${column_array[$i]} (${types[$i]})"
+    done
 }
 
 #-----------list-tables-functions--------
@@ -37,6 +55,7 @@ drop_table() {
 
 	if [ -f "$db_dir/$db_name/$table_name" ]; then
                 rm "$db_dir/$db_name/$table_name"
+		rm "$db_dir/$db_name/$table_name.types"
 		echo "Table dropped properly"
         else
 		echo "Table dosn't exist"
@@ -47,7 +66,7 @@ drop_table() {
 
 #-----------insert-tables-functions--------
 insert_into_table() {
-	local db_name="$1"
+        local db_name="$1"
         read -p "please, Enter table name: " table_name
 
     if [ ! -f "$db_dir/$db_name/$table_name" ]; then
@@ -71,9 +90,6 @@ insert_into_table() {
     # Remove the last '|' and append the row to the table
     row_values="${row_values%|}"
     echo "$row_values" >> "$db_dir/$db_name/$table_name"
-    echo "Record inserted successfully."
-
-
 }
 
 #-----------select-tables-functions--------
