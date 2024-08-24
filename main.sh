@@ -3,18 +3,25 @@
 #this is main file
 
 #-------Intialization-message-------
-BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+red="\033[0;31m"
+green="\033[0;32m"
+yellow="\033[0;33m"
+blue="\033[0;34m"
+reset="\033[0m" 
 
-echo -e "${BLUE}##############################${NC}"
-echo -e "${YELLOW}#   ____       _             #${NC}"
-echo -e "${YELLOW}#  | __ )  ___| |_ __ __     #${NC}"
-echo -e "${YELLOW}#  |  _ \ / _ \ __/ _  |     #${NC}"
-echo -e "${YELLOW}#  | |_) |  __/ || (_| |     #${NC}"
-echo -e "${YELLOW}#  |____/ \___|\__\__ _|     #${NC}"
-echo -e "${YELLOW}#                            #${NC}"
-echo -e "${BLUE}##############################${NC}"
+
+bar=""
+for ((i=0; i<50; i++)); do
+    bar+="\u2500"
+done
+
+# Print 
+echo -e "$bar\u252c$bar\u2500\u2500"
+echo -e "${green}                                          Database${green} Beta${green} Version${reset}"
+echo -e "$bar\u2534$bar\u2500\u2500"
+
+
+
 
 #--------------------------sourcing-section-----------------------------------
 source ./db-functions.sh

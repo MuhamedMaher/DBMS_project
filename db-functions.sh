@@ -62,9 +62,11 @@ create_database () {
 
 	read -p "please, Enter Database name: " db_name
 	if [ -d "$db_dir/$db_name"  ]; then
+		echo "-----------------------------"
 		echo "Database name reserved, try another name"
 	else
 		mkdir -p "$db_dir/$db_name"
+		echo "-----------------------------"
 		echo "Database created successfully"
 	fi
 
